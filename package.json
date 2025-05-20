@@ -1,0 +1,66 @@
+{
+  "name": "kyra-crypto",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plataforma educacional e de ferramentas para criptomoedas",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "migrate": "ts-node --esm scripts/run-migrations.ts"
+  },
+  "keywords": [
+    "crypto",
+    "bitcoin",
+    "education",
+    "defi"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@auth/pg-adapter": "^1.9.1",
+    "@dynamic-labs/bitcoin": "^3.0.0",
+    "@dynamic-labs/ethereum": "^4.18.6",
+    "@dynamic-labs/sdk-react": "^0.18.30",
+    "@dynamic-labs/solana": "^4.18.6",
+    "@headlessui/react": "^2.2.3",
+    "@next/font": "^14.2.15",
+    "@supabase/auth-helpers-react": "^0.5.0",
+    "@supabase/supabase-js": "^2.49.4",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@walletconnect/modal": "^2.6.4",
+    "@walletconnect/sign-client": "^2.8.3",
+    "autoprefixer": "^10.4.14",
+    "axios": "^1.6.7",
+    "critters": "^0.0.23",
+    "dotenv": "^16.5.0",
+    "ethers": "^6.14.1",
+    "formidable": "^3.5.4",
+    "jsonwebtoken": "^9.0.2",
+    "next": "^14.1.0",
+    "next-themes": "^0.4.6",
+    "nodemailer": "^7.0.3",
+    "pg": "^8.16.0",
+    "postcss": "^8.4.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/formidable": "^3.4.5",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/nodemailer": "^6.4.17",
+    "@types/pg": "^8.15.2",
+    "ts-node": "^10.9.2"
+  },
+  "resolutions": {
+    "axios": "^1.6.7",
+    "ws": "^8.16.0",
+    "bigint-buffer": "^2.0.0"
+  }
+}
