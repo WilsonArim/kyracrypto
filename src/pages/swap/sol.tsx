@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../../components/Layout';
+import FavoriteStar from '../../components/FavoriteStar';
 
 const protocolos = [
   {
@@ -11,7 +12,7 @@ const protocolos = [
     defillama: 'https://defillama.com/protocol/jupiter',
     github: 'https://github.com/jup-ag',
     discord: 'https://discord.gg/jupag',
-    telegram: 'https://t.me/JupiterAggregator',
+    telegram: 'https://t.me/jup_marketing',
     funcao: 'SWAP AGREGADOR / PERPS / DAO',
     icon: "/images/barra_de_navegacao/jupiter.jpg"
   },
@@ -40,25 +41,13 @@ const protocolos = [
     funcao: 'SWAP / POOLS / STAKE / LAUNCHPAD',
     icon: "/images/barra_de_navegacao/raydium.jpg"
   },
-  {
-    nome: 'Meteora',
-    url: 'https://meteora.ag/', // App link for DLMM/Vaults
-    landing: 'https://meteora.ag/',
-    twitter: 'https://twitter.com/MeteoraAG',
-    documentation: 'https://docs.meteora.ag/',
-    github: 'https://github.com/MeteoraAg',
-    discord: 'https://discord.gg/meteora',
-    telegram: 'https://t.me/meteora_ag',
-    funcao: 'SWAP / POOLS (DLMM)',
-    icon: "/images/barra_de_navegacao/meteora.jpg"
-  },
 ];
 
 export default function SwapSol() {
   return (
     <Layout>
       <div className="py-8">
-        <h1 className="text-2xl font-bold mb-4">SWAP - SOL</h1>
+        <h1 className="text-4xl font-bold text-white mb-10 text-center">Swap - SOL</h1>
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
           {protocolos.map((p) => {
             const docLinkText = p.documentation && p.documentation.toLowerCase().includes("whitepaper")
@@ -101,14 +90,6 @@ export default function SwapSol() {
                       </svg>
                     </a>
                   )}
-                  {p.landing && p.landing !== p.url && (
-                    <a href={p.landing} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`Landing page de ${p.nome}`}>
-                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="10" cy="10" r="8" stroke="#22d3ee" strokeWidth="2" fill="none"/>
-                        <path d="M2 10h16M10 2a16 16 0 0 1 0 16M10 2a16 16 0 0 0 0 16" stroke="#22d3ee" strokeWidth="1.5" fill="none"/>
-                      </svg>
-                    </a>
-                  )}
                   {p.github && (
                     <a href={p.github} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`GitHub de ${p.nome}`}>
                       <img src="/images/barra_de_navegacao/github.png" alt="GitHub" className="w-5 h-5 object-contain" />
@@ -119,6 +100,16 @@ export default function SwapSol() {
                       <img src="/images/barra_de_navegacao/defillama.png" alt="DefiLlama" className="w-5 h-5 object-contain" />
                     </a>
                   )}
+                  <div className="ml-2 flex items-center justify-center w-8 h-8">
+                    <FavoriteStar 
+                      key={p.nome + '-SWAP - SOL'}
+                      protocolIdentifier={p.nome}
+                      categoryPath={"SWAP - SOL"}
+                      protocolName={p.nome}
+                      protocolUrl={p.url}
+                      protocolIconUrl={p.icon}
+                    />
+                  </div>
                 </div>
               </li>
             );

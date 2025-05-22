@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../../components/Layout';
+import FavoriteStar from '../../components/FavoriteStar';
 
 const protocolos = [
   {
@@ -24,42 +25,41 @@ const protocolos = [
     github: 'https://github.com/notional-finance',
     defillama: 'https://defillama.com/protocol/notional',
     discord: 'https://discord.notional.finance/',
-    telegram: 'https://t.me/notionalfinance',
     funcao: 'FIXED RATE LENDING / STAKING (NOTE Token)',
     icon: "/images/barra_de_navegacao/notional.jpg"
   },
   {
     nome: 'Pendle Finance',
-    url: 'https://app.pendle.finance/stake',
+    url: 'https://app.pendle.finance/trade/markets?utm_source=landing&utm_medium=landing',
     landing: 'https://www.pendle.finance/',
     twitter: 'https://twitter.com/pendle_fi',
-    documentation: 'https://docs.pendle.finance/protocole/vependle',
+    documentation: 'https://docs.pendle.finance/home?utm_source=landing&utm_medium=landing',
     github: 'https://github.com/pendle-finance',
     defillama: 'https://defillama.com/protocol/pendle',
-    discord: 'https://discord.gg/pendlefinance',
-    telegram: 'https://t.me/pendlefinance',
+    discord: 'https://discord.com/invite/EAujvncY2R',
+    telegram: 'https://t.me/pendlefinance/',
     funcao: 'YIELD TRADING / STAKING (vePENDLE)',
     icon: "/images/barra_de_navegacao/pendle.jpg"
   },
   {
     nome: 'Spectra Finance',
-    url: 'https://www.spectra.finance/',
+    url: 'https://app.spectra.finance/fixed-rate',
     landing: 'https://www.spectra.finance/',
     twitter: 'https://x.com/spectra_finance',
     documentation: 'https://docs.spectra.finance/',
-    github: null,
+    github: 'https://github.com/perspectivefi',
     defillama: 'https://defillama.com/protocol/spectra',
-    discord: 'https://discord.gg/FXh99F2M8x',
-    telegram: 'https://t.me/+fMpgR8S1H9pjYmU0',
+    discord: 'https://discord.com/invite/e2PfbPenMB',
+    telegram: 'https://t.me/APWineFinance',
     funcao: 'YIELD DERIVATIVES / EARN',
     icon: "/images/barra_de_navegacao/spectra.jpg"
   },
   {
     nome: 'Hyperliquid',
-    url: 'https://app.hyperliquid.xyz/',
+    url: 'https://app.hyperliquid.xyz/vaults',
     landing: 'https://app.hyperliquid.xyz/',
     twitter: 'https://twitter.com/HyperliquidX',
-    documentation: 'https://docs.hyperliquid.xyz/hyperliquid-l1/staking-and-delegation',
+    documentation: 'https://hyperliquid.gitbook.io/hyperliquid-docs',
     github: null,
     defillama: 'https://defillama.com/protocol/hyperliquid',
     discord: 'https://discord.gg/hyperliquid',
@@ -69,7 +69,7 @@ const protocolos = [
   },
   {
     nome: 'Aura Finance',
-    url: 'https://aura.finance/',
+    url: 'https://app.aura.finance/',
     landing: 'https://aura.finance/',
     twitter: 'https://twitter.com/AuraFinance',
     documentation: 'https://docs.aura.finance/',
@@ -93,13 +93,51 @@ const protocolos = [
     funcao: 'YIELD BOOSTER (Curve) / STAKING',
     icon: "/images/barra_de_navegacao/convex.jpg"
   },
+  {
+    nome: 'Lido DAO',
+    url: 'https://stake.lido.fi/',
+    landing: 'https://lido.fi/',
+    twitter: 'https://twitter.com/LidoFinance',
+    documentation: 'https://docs.lido.fi/',
+    github: 'https://github.com/lidofinance',
+    defillama: 'https://defillama.com/protocol/lido',
+    discord: 'https://discord.gg/lido',
+    telegram: 'https://t.me/lidofinance',
+    funcao: 'LIQUID STAKING (ETH, MATIC, etc.)',
+    icon: '/images/barra_de_navegacao/lido.jpg'
+  },
+  {
+    nome: 'Rocket Pool',
+    url: 'https://stake.rocketpool.net/',
+    landing: 'https://rocketpool.net/',
+    twitter: 'https://twitter.com/Rocket_Pool',
+    documentation: 'https://docs.rocketpool.net/',
+    github: 'https://github.com/rocket-pool',
+    defillama: 'https://defillama.com/protocol/rocket-pool',
+    discord: 'https://discord.gg/rocketpool',
+    funcao: 'LIQUID STAKING (ETH)',
+    icon: '/images/barra_de_navegacao/rocketpool.png'
+  },
+  {
+    nome: 'Stader Labs (ETHx)',
+    url: 'https://www.staderlabs.com/',
+    landing: 'https://www.staderlabs.com/',
+    twitter: 'https://twitter.com/staderlabs',
+    documentation: 'https://docs.staderlabs.com/',
+    github: 'https://github.com/stader-labs',
+    defillama: 'https://defillama.com/protocol/stader',
+    discord: 'https://discord.gg/stader',
+    telegram: 'https://t.me/staderlabs',
+    funcao: 'LIQUID STAKING (ETHx)',
+    icon: '/images/barra_de_navegacao/stader.jpg'
+  },
 ];
 
 export default function StakeEvm() {
   return (
     <Layout>
       <div className="py-8">
-        <h1 className="text-2xl font-bold mb-4">STAKE - EVM</h1>
+        <h1 className="text-4xl font-bold text-white mb-10 text-center">Stake - EVM</h1>
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
           {protocolos.map((p) => {
             const docLinkText = p.documentation && p.documentation.toLowerCase().includes("whitepaper")
@@ -115,7 +153,29 @@ export default function StakeEvm() {
                     <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-cyan-300 font-bold text-lg hover:underline">
                       {p.nome}
                     </a>
-                    <span className="text-xs text-gray-200 mt-1 tracking-wide uppercase">{p.funcao}</span>
+                    <span className="text-xs text-gray-200 mt-1 tracking-wide uppercase">
+                      {p.nome === 'Aave' ? (
+                        'LENDING / STAKING (SAFETY MODULE)'
+                      ) : p.nome === 'Notional Finance' ? (
+                        'FIXED RATE LENDING / STAKING (NOTE Token)'
+                      ) : p.nome === 'Pendle Finance' ? (
+                        'YIELD TRADING / STAKING (vePENDLE)'
+                      ) : p.nome === 'Aura Finance' ? (
+                        'YIELD BOOSTER / STAKING'
+                      ) : p.nome === 'Convex Finance' ? (
+                        'YIELD BOOSTER / STAKING'
+                      ) : p.nome === 'Lido DAO' ? (
+                        'LIQUID STAKING'
+                      ) : p.nome === 'Rocket Pool' ? (
+                        'LIQUID STAKING'
+                      ) : p.nome === 'Stader Labs (ETHx)' ? (
+                        'LIQUID STAKING (ETHx)'
+                      ) : p.nome === 'Hyperliquid' ? (
+                        'PERPETUALS DEX / STAKING (L1 Security)'
+                      ) : (
+                        p.funcao
+                      )}
+                    </span>
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -124,7 +184,7 @@ export default function StakeEvm() {
                       <span className="text-xs text-cyan-400">{docLinkText}</span>
                     </a>
                   )}
-                  {p.discord && (
+                  {p.discord && p.nome !== 'Stader Labs (ETHx)' && (
                     <a href={p.discord} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`Discord de ${p.nome}`}>
                       <img src="/images/icons/discord.jpg" alt="Discord" className="w-5 h-5 object-contain" />
                     </a>
@@ -142,14 +202,6 @@ export default function StakeEvm() {
                       </svg>
                     </a>
                   )}
-                  {p.landing && p.landing !== p.url && (
-                    <a href={p.landing} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`Landing page de ${p.nome}`}>
-                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="10" cy="10" r="8" stroke="#22d3ee" strokeWidth="2" fill="none"/>
-                        <path d="M2 10h16M10 2a16 16 0 0 1 0 16M10 2a16 16 0 0 0 0 16" stroke="#22d3ee" strokeWidth="1.5" fill="none"/>
-                      </svg>
-                    </a>
-                  )}
                   {p.github && (
                     <a href={p.github} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`GitHub de ${p.nome}`}>
                       <img src="/images/barra_de_navegacao/github.png" alt="GitHub" className="w-5 h-5 object-contain" />
@@ -160,6 +212,16 @@ export default function StakeEvm() {
                       <img src="/images/barra_de_navegacao/defillama.png" alt="DefiLlama" className="w-5 h-5 object-contain" />
                     </a>
                   )}
+                  <div className="ml-2 flex items-center justify-center w-8 h-8">
+                    <FavoriteStar 
+                      key={p.nome + '-STAKE - EVM'}
+                      protocolIdentifier={p.nome}
+                      categoryPath={"STAKE - EVM"}
+                      protocolName={p.nome}
+                      protocolUrl={p.url}
+                      protocolIconUrl={p.icon}
+                    />
+                  </div>
                 </div>
               </li>
             );

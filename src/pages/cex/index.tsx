@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../../components/Layout';
+import FavoriteStar from '../../components/FavoriteStar';
 
 const protocolosCEX = [
   {
@@ -59,9 +60,7 @@ const protocolosCEX = [
     landing: 'https://www.kraken.com/',
     twitter: 'https://twitter.com/krakenfx',
     documentation: 'https://support.kraken.com/',
-    telegram: 'https://t.me/krakenofficial',
     github: 'https://github.com/krakenfx',
-    defillama: 'https://defillama.com/cex/kraken',
     funcao: 'EXCHANGE CENTRALIZADA (CEX) / STAKING / DERIVATIVOS',
     icon: '/images/barra_de_navegacao/kraken.jpg'
   },
@@ -71,7 +70,6 @@ const protocolosCEX = [
     landing: 'https://www.coinbase.com/',
     twitter: 'https://twitter.com/coinbase',
     documentation: 'https://help.coinbase.com/',
-    telegram: 'https://t.me/CoinbaseNews',
     github: 'https://github.com/coinbase',
     defillama: 'https://defillama.com/protocol/coinbase-wallet',
     funcao: 'EXCHANGE CENTRALIZADA (CEX) / WALLET / EARN',
@@ -83,7 +81,7 @@ export default function CexPage() {
   return (
     <Layout>
       <div className="container mx-auto py-8">
-        <h1 className="text-3xl font-bold text-cyan-400 mb-8">Plataformas CEX (Exchanges Centralizadas)</h1>
+        <h1 className="text-4xl font-bold text-white mb-10 text-center">CEX</h1>
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {protocolosCEX.map((p) => {
             const docLinkText = p.documentation && p.documentation.toLowerCase().includes("whitepaper")
@@ -136,6 +134,16 @@ export default function CexPage() {
                       <img src="/images/barra_de_navegacao/defillama.png" alt="DefiLlama" className="w-5 h-5 object-contain" />
                     </a>
                   )}
+                  <div className="ml-2 flex items-center justify-center w-8 h-8">
+                    <FavoriteStar 
+                      key={p.nome + '-CEX'}
+                      protocolIdentifier={p.nome}
+                      categoryPath={"CEX"}
+                      protocolName={p.nome}
+                      protocolUrl={p.url}
+                      protocolIconUrl={p.icon}
+                    />
+                  </div>
                 </div>
               </li>
             );

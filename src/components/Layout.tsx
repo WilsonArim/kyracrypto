@@ -26,7 +26,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       />
       {/* Kyra no topo esquerdo */}
       <div className="fixed top-4 left-4 z-10 logo-glow">
-        <Image src="/images/kyra.png" alt="Kyra" width={80} height={80} />
+        <Image src="/images/kyra.png" alt="Kyra" width={80} height={80} style={{ height: 'auto' }} />
       </div>
       {/* Ícone de pata no lado esquerdo */}
       <div className="fixed top-28 left-8 z-20 paw-glow" onMouseEnter={() => setShowPopover(true)} onMouseLeave={() => setShowPopover(false)}>

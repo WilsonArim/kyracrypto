@@ -205,49 +205,43 @@ const perguntasFAQ = [
 ];
 
 export default function FAQ() {
-  const [search, setSearch] = useState('');
-  const perguntasFiltradas = perguntasFAQ.filter(
-    (item) =>
-      item.pergunta.toLowerCase().includes(search.toLowerCase()) ||
-      item.resposta.toLowerCase().includes(search.toLowerCase())
-  );
+  const [busca, setBusca] = useState('');
+
+  const filtrarPerguntas = (texto: string) => {
+    return perguntasFAQ.filter(item =>
+      item.pergunta.toLowerCase().includes(texto.toLowerCase()) ||
+      item.resposta.toLowerCase().includes(texto.toLowerCase())
+    );
+  };
+
+  const perguntasFiltradas = filtrarPerguntas(busca);
 
   return (
     <Layout>
-      <div className="max-w-3xl mx-auto py-16 px-4">
-        <h1 className="text-4xl font-bold text-cyan-400 mb-8">FAQ - Perguntas Frequentes</h1>
-        <input
-          type="text"
-          placeholder="Pesquisar pergunta ou resposta..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="mb-8 w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder-gray-400"
-        />
-        <div className="faq-glow p-8 mt-8">
-          <h2 className="text-2xl font-bold mb-4">Introdução ao FAQ</h2>
-          <p className="mb-6">Oi, eu sou a Kyra! 🐶 Se estás a começar no mundo das criptomoedas, é normal teres mil e uma dúvidas. Aqui compilei um leque enorme de perguntas que os iniciantes mais fazem, com respostas simples para te ajudar a aprender, a sentir-te seguro e a dar os primeiros passos com confiança. Vamos explorar juntos?</p>
+      <div className="flex flex-col items-center min-h-screen pt-8 md:pt-12">
+        <h1 className="text-4xl font-bold text-white mb-10">Perguntas Frequentes</h1>
+        <div className="w-full max-w-5xl px-4">
+          {/* Barra de pesquisa */}
+          <div className="flex items-center gap-4 mb-8">
+            <input
+              type="text"
+              placeholder="Pesquisar pergunta..."
+              value={busca}
+              onChange={e => setBusca(e.target.value)}
+              className="flex-1 px-4 py-2 rounded bg-[#232136] text-white border border-[#333] focus:outline-none"
+            />
+            <button className="px-6 py-2 rounded bg-[#00BFFF] text-white font-bold">Pesquisar</button>
+          </div>
+          {/* Lista de perguntas */}
           <div className="space-y-6">
-            {perguntasFiltradas.length === 0 ? (
-              <p className="text-white text-center">Nenhuma pergunta encontrada.</p>
-            ) : (
-              perguntasFiltradas.map((item, idx) => (
-                <div key={idx}>
-                  <h3 className="font-bold text-lg mb-1">{idx + 1}. {item.pergunta}</h3>
-                  <p>{item.resposta}</p>
-                </div>
-              ))
-            )}
+            {perguntasFiltradas.map((item, idx) => (
+              <div key={idx} className="bg-[#232136] rounded-lg p-6 border border-[#00BFFF]">
+                <h2 className="text-xl font-bold text-cyan-400 mb-4">{item.pergunta}</h2>
+                <p className="text-white">{item.resposta}</p>
+              </div>
+            ))}
           </div>
         </div>
-        <style jsx>{`
-          .faq-glow {
-            background: transparent;
-            border: 2px solid #3ecbff;
-            border-radius: 18px;
-            box-shadow: 0 0 16px 2px #3ecbff, 0 0 40px 4px #1a2b3c inset;
-            margin: 0 0 18px 0;
-          }
-        `}</style>
       </div>
     </Layout>
   );

@@ -29,19 +29,6 @@ const protocolos = [
     icon: "/images/barra_de_navegacao/PancakeSwap.jpg"
   },
   {
-    nome: "Curve",
-    url: "https://curve.fi/",
-    landing: "https://curve.fi/",
-    twitter: "https://twitter.com/CurveFinance",
-    documentation: "https://docs.curve.fi/",
-    defillama: "https://defillama.com/protocol/curve-finance",
-    github: "https://github.com/curvefi",
-    discord: "https://discord.gg/rgrfS7W",
-    telegram: "https://t.me/curvefi",
-    funcao: "SWAP / POOLS (Stablecoins)",
-    icon: "/images/barra_de_navegacao/curve.jpg"
-  },
-  {
     nome: "Balancer",
     url: "https://app.balancer.fi/",
     landing: "https://balancer.fi/",
@@ -62,7 +49,7 @@ export default function SwapEvm() {
   return (
     <Layout>
       <div className="py-8">
-        <h1 className="text-2xl font-bold mb-4">SWAP - EVM</h1>
+        <h1 className="text-4xl font-bold text-white mb-10 text-center">Swap - EVM</h1>
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
           {protocolos.map((p) => {
             const docLinkText = p.documentation && p.documentation.toLowerCase().includes("whitepaper")
@@ -105,7 +92,7 @@ export default function SwapEvm() {
                       </svg>
                     </a>
                   )}
-                  {p.landing && p.landing !== p.url && (
+                  {p.landing && p.landing !== p.url && p.nome !== 'Uniswap' && (
                     <a href={p.landing} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`Landing page de ${p.nome}`}>
                       <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="10" cy="10" r="8" stroke="#22d3ee" strokeWidth="2" fill="none"/>

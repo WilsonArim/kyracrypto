@@ -414,7 +414,7 @@ export default function Glossario() {
 
   return (
     <Layout>
-      <div className="flex flex-col items-center py-12 min-h-screen">
+      <div className="flex flex-col items-center min-h-screen pt-8 md:pt-12">
         <h1 className="text-4xl font-bold text-white mb-10">Glossário</h1>
         <input
           type="text"

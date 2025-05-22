@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
+import FavoriteStar from '../components/FavoriteStar';
 
 const protocolos = [
   {
@@ -42,26 +43,13 @@ const protocolos = [
     icon: "/images/barra_de_navegacao/maple.jpg"
   },
   {
-    nome: 'TrueFi',
-    url: 'https://truefi.io/',
-    landing: 'https://truefi.io/',
-    governance: 'https://www.tally.xyz/gov/truefi',
-    github: 'https://github.com/trusttoken',
-    defillama: 'https://defillama.com/protocol/truefi',
-    discord: 'https://discord.com/invite/truefi',
-    telegram: 'https://t.me/TrueFiDAO',
-    twitter: 'https://twitter.com/TrueFiDAO',
-    funcao: 'PROTOCOLO DE CRÉDITO ON-CHAIN (EMPRÉSTIMOS RWA)',
-    icon: "/images/barra_de_navegacao/truefi.jpg"
-  },
-  {
     nome: 'Plume Network',
     url: 'https://www.plumenetwork.xyz/',
     landing: 'https://www.plumenetwork.xyz/',
     governance: 'https://plumenetwork.xyz/ecosystem',
     github: 'https://github.com/plumenetwork',
-    defillama: 'https://defillama.com/protocol/plume-network',
-    discord: 'https://discord.gg/plume',
+    defillama: 'https://defillama.com/chain/plume-mainnet',
+    discord: 'https://discord.com/invite/plume-network',
     telegram: 'https://t.me/plumenetwork',
     twitter: 'https://twitter.com/plumenetwork',
     funcao: 'CAMADA MODULAR RWA LAYER 2 / L1',
@@ -73,7 +61,7 @@ export default function RWA() {
   return (
     <Layout>
       <div className="container mx-auto py-8">
-        <h1 className="text-3xl font-bold text-cyan-400 mb-8">RWA - Real World Assets (EVM)</h1>
+        <h1 className="text-4xl font-bold text-white mb-10 text-center">RWA - Real World Assets</h1>
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
           {protocolos.map((p) => {
             const docLinkText = p.governance && p.governance.toLowerCase().includes("whitepaper")
@@ -98,7 +86,7 @@ export default function RWA() {
                       <span className="text-xs text-cyan-400">{docLinkText}</span>
                     </a>
                   )}
-                  {p.discord && (
+                  {p.discord && p.nome !== 'Centrifuge' && (
                     <a href={p.discord} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`Discord de ${p.nome}`}>
                       <img src="/images/icons/discord.jpg" alt="Discord" className="w-5 h-5 object-contain" />
                     </a>
@@ -116,14 +104,6 @@ export default function RWA() {
                       </svg>
                     </a>
                   )}
-                  {p.landing && p.landing !== p.url && (
-                    <a href={p.landing} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`Landing page de ${p.nome}`}>
-                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="10" cy="10" r="8" stroke="#22d3ee" strokeWidth="2" fill="none"/>
-                        <path d="M2 10h16M10 2a16 16 0 0 1 0 16M10 2a16 16 0 0 0 0 16" stroke="#22d3ee" strokeWidth="1.5" fill="none"/>
-                      </svg>
-                    </a>
-                  )}
                   {p.github && (
                     <a href={p.github} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`GitHub de ${p.nome}`}>
                       <img src="/images/barra_de_navegacao/github.png" alt="GitHub" className="w-5 h-5 object-contain" />
@@ -134,6 +114,16 @@ export default function RWA() {
                       <img src="/images/barra_de_navegacao/defillama.png" alt="DefiLlama" className="w-5 h-5 object-contain" />
                     </a>
                   )}
+                  <div className="ml-2 flex items-center justify-center w-8 h-8">
+                    <FavoriteStar 
+                      key={p.nome + '-RWA'}
+                      protocolIdentifier={p.nome}
+                      categoryPath={"RWA"}
+                      protocolName={p.nome}
+                      protocolUrl={p.url}
+                      protocolIconUrl={p.icon}
+                    />
+                  </div>
                 </div>
               </li>
             );

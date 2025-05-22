@@ -7,7 +7,7 @@ const plataformas = [
     url: 'https://mercadobitcoin.pt/',
     landing: 'https://mercadobitcoin.pt/',
     twitter: 'https://twitter.com/mb_portugal',
-    icon: '/images/icons/mercadobitcoin.png',
+    icon: '/images/barra_de_navegacao/mercado-bitcoinpt.jpg',
     funcao: 'Guia para financiar carteira via Mercado Bitcoin em Portugal.'
   },
   {
@@ -17,7 +17,7 @@ const plataformas = [
     twitter: 'https://twitter.com/MercadoBitcoin',
     telegram: 'https://t.me/MercadoBitcoin',
     documentation: 'https://www.mercadobitcoin.com.br/wp-content/uploads/2023/02/whitepaper-v1_pt.pdf',
-    icon: '/images/icons/mercadobitcoin.png',
+    icon: '/images/barra_de_navegacao/mercado-bitcoin.jpg',
     funcao: 'Guia para financiar carteira via Mercado Bitcoin no Brasil.'
   }
 ];
@@ -52,11 +52,6 @@ export default function FinanciarCarteiraPage() {
                     </a>
                   )}
                   <div className="flex items-center justify-center space-x-3">
-                    {p.landing && p.landing !== p.url && (
-                      <a href={p.landing} target="_blank" rel="noopener noreferrer" title="Landing Page" className="social-link">
-                        <img src="/images/icons/landing.png" alt="Landing Page" className="w-6 h-6" />
-                      </a>
-                    )}
                     {p.twitter && (
                       <a href={p.twitter} target="_blank" rel="noopener noreferrer" title="Twitter / X" className="social-link">
                         <svg width="24" height="24" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M908.5 320H741.5L600 529.5L458.5 320H291.5L540.5 677.5L291.5 1007H458.5L600 797.5L741.5 1007H908.5L659.5 677.5L908.5 320Z" fill="#22d3ee"/></svg>

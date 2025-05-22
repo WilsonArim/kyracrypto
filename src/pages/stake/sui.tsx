@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../../components/Layout';
+import FavoriteStar from '../../components/FavoriteStar';
 
 interface Protocolo {
   nome: string;
@@ -52,12 +53,11 @@ const protocolos: Protocolo[] = [
   },
   {
     nome: 'Aftermath Finance',
-    url: 'https://aftermath.finance/earn/liquid-staking', // Direct link to liquid staking
+    url: 'https://aftermath.finance/stake?validator=aftermath', // Direct link to liquid staking
     landing: 'https://aftermath.finance/',
     twitter: 'https://twitter.com/aftermathfi',
     documentation: 'https://docs.aftermath.finance/',
-    discord: 'https://discord.gg/aftermathfi',
-    telegram: 'https://t.me/aftermath_finance',
+    discord: 'https://discord.com/invite/KvVCAauXk5',
     funcao: 'LIQUID STAKING / AGREGADOR DEX',
     icon: "/images/barra_de_navegacao/aftermath.jpg"
   },
@@ -72,37 +72,13 @@ const protocolos: Protocolo[] = [
     funcao: 'DERIVATIVOS / sUI COLLATERAL',
     icon: "/images/barra_de_navegacao/bluefin.jpg"
   },
-  {
-    nome: 'Cetus', // Already in dex/sui, listed here for stake/farm context
-    url: 'https://www.cetus.zone/farms', // Direct link to farms
-    landing: 'https://www.cetus.zone/',
-    twitter: 'https://twitter.com/CetusProtocol',
-    documentation: 'https://cetus-protocol.gitbook.io/cetus-protocol/',
-    defillama: null,
-    github: null,
-    discord: 'https://discord.gg/cetusprotocol',
-    telegram: 'https://t.me/cetusprotocol',
-    funcao: 'DEX / YIELD FARMING',
-    icon: "/images/barra_de_navegacao/cetus.jpg"
-  },
-  {
-    nome: 'Turbos', // Already in dex/sui, listed here for stake/farm context
-    url: 'https://turbos.finance/farm', // Direct link to farms
-    landing: 'https://turbos.finance/',
-    twitter: 'https://twitter.com/Turbos_finance',
-    documentation: 'https://docs.turbos.finance/',
-    discord: 'https://discord.gg/turbosfinance',
-    telegram: 'https://t.me/turbosfinance_EN',
-    funcao: 'DEX / YIELD FARMING',
-    icon: "/images/barra_de_navegacao/turbos.jpg"
-  },
 ];
 
 export default function StakeSui() {
   return (
     <Layout>
       <div className="py-8">
-        <h1 className="text-2xl font-bold mb-4">STAKE - SUI</h1>
+        <h1 className="text-4xl font-bold text-white mb-10 text-center">Stake - SUI</h1>
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
           {protocolos.map((p) => {
             const docLinkText = p.documentation && p.documentation.toLowerCase().includes("whitepaper")
@@ -132,7 +108,7 @@ export default function StakeSui() {
                       <img src="/images/icons/discord.jpg" alt="Discord" className="w-5 h-5 object-contain" />
                     </a>
                   )}
-                  {p.telegram && (
+                  {p.telegram && p.nome !== 'Haedal Protocol' && p.nome !== 'Aftermath Finance' && (
                     <a href={p.telegram} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`Telegram de ${p.nome}`}>
                       <img src="/images/icons/telegram.jpg" alt="Telegram" className="w-5 h-5 object-contain" />
                     </a>
@@ -142,14 +118,6 @@ export default function StakeSui() {
                       <svg width="18" height="18" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="1200" height="1227" rx="200" fill="none"/>
                         <path d="M908.5 320H741.5L600 529.5L458.5 320H291.5L540.5 677.5L291.5 1007H458.5L600 797.5L741.5 1007H908.5L659.5 677.5L908.5 320Z" fill="#22d3ee"/>
-                      </svg>
-                    </a>
-                  )}
-                  {p.landing && p.landing !== p.url && /* Only show landing if different from app url */ (
-                    <a href={p.landing} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`Landing page de ${p.nome}`}>
-                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="10" cy="10" r="8" stroke="#22d3ee" strokeWidth="2" fill="none"/>
-                        <path d="M2 10h16M10 2a16 16 0 0 1 0 16M10 2a16 16 0 0 0 0 16" stroke="#22d3ee" strokeWidth="1.5" fill="none"/>
                       </svg>
                     </a>
                   )}
@@ -163,7 +131,16 @@ export default function StakeSui() {
                       <img src="/images/barra_de_navegacao/defillama.png" alt="DefiLlama" className="w-5 h-5 object-contain" />
                     </a>
                   )}
-                  {/* Placeholder for new links - add your own rendering logic and icons */}
+                  <div className="ml-2 flex items-center justify-center w-8 h-8">
+                    <FavoriteStar 
+                      key={p.nome + '-STAKE - SUI'}
+                      protocolIdentifier={p.nome}
+                      categoryPath={"STAKE - SUI"}
+                      protocolName={p.nome}
+                      protocolUrl={p.url}
+                      protocolIconUrl={p.icon}
+                    />
+                  </div>
                 </div>
               </li>
             );

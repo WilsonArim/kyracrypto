@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../../components/Layout';
+import FavoriteStar from '../../components/FavoriteStar';
 
 const protocolos = [
   {
@@ -9,7 +10,7 @@ const protocolos = [
     twitter: "https://twitter.com/KaminoFinance",
     documentation: "https://docs.kamino.finance/",
     github: "https://github.com/Kamino-Finance",
-    discord: "https://discord.com/invite/GeN4ccd",
+    discord: "https://discord.com/invite/kaminofinance",
     telegram: "https://t.me/+z4XqPSCki-hhMDc0",
     defillama: 'https://defillama.com/protocol/kamino',
     funcao: "YIELD / EMPRÉSTIMOS",
@@ -19,10 +20,9 @@ const protocolos = [
     nome: "Jito",
     url: "https://jito.network/",
     landing: "https://jito.network/",
-    twitter: "https://twitter.com/jito_network",
+    twitter: "https://x.com/jito_sol",
     documentation: "https://docs.jito.wtf/",
-    github: null,
-    discord: "https://discord.gg/jito",
+    discord: "https://discord.com/invite/jitocommunity",
     telegram: "https://t.me/+csIgnEQMCHhiYjVh",
     defillama: 'https://defillama.com/protocol/jito',
     funcao: "STAKING LÍQUIDO",
@@ -34,9 +34,7 @@ const protocolos = [
     landing: "https://marinade.finance/",
     twitter: "https://twitter.com/MarinadeFinance",
     documentation: "https://docs.marinade.finance/",
-    github: null,
     discord: "https://discord.gg/yTdH8YkYKg",
-    telegram: null,
     defillama: 'https://defillama.com/protocol/marinade',
     funcao: "STAKING LÍQUIDO",
     icon: "/images/barra_de_navegacao/marinade.jpg"
@@ -47,7 +45,7 @@ const protocolos = [
     landing: "https://drift.trade/",
     twitter: "https://twitter.com/DriftProtocol",
     documentation: "https://docs.drift.trade/",
-    github: null,
+    github: "https://github.com/drift-labs",
     discord: "https://discord.com/invite/fMcZBH8ErM",
     telegram: "https://t.me/+G4i0AZcHf6cxNDll",
     defillama: 'https://defillama.com/protocol/drift',
@@ -82,13 +80,11 @@ const protocolos = [
   },
   {
     nome: "Save",
-    url: "https://save.org/",
+    url: "https://save.finance/",
     landing: "https://save.org/",
-    twitter: "https://twitter.com/saveorg",
-    documentation: null,
-    github: null,
-    discord: null,
-    telegram: null,
+    twitter: "https://x.com/save_finance",
+    documentation: "https://docs.save.finance/",
+    discord: "https://discord.com/invite/J7m48UUPkJ",
     funcao: "EMPRÉSTIMOS",
     icon: "/images/barra_de_navegacao/save.jpg"
   }
@@ -98,7 +94,7 @@ export default function StakeSol() {
   return (
     <Layout>
       <div className="py-8">
-        <h1 className="text-2xl font-bold mb-4">STAKE - SOL</h1>
+        <h1 className="text-4xl font-bold text-white mb-10 text-center">Stake - SOL</h1>
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
           {protocolos.map((p) => {
             const docLinkText = p.documentation && p.documentation.toLowerCase().includes("whitepaper")
@@ -123,14 +119,19 @@ export default function StakeSol() {
                       <span className="text-xs text-cyan-400">{docLinkText}</span>
                     </a>
                   )}
-                  {p.discord && (
+                  {p.discord && p.nome !== 'MarginFi' && (
                     <a href={p.discord} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`Discord de ${p.nome}`}>
                       <img src="/images/icons/discord.jpg" alt="Discord" className="w-5 h-5 object-contain" />
                     </a>
                   )}
-                  {p.telegram && (
+                  {p.telegram && p.nome !== 'Kamino' && p.nome !== 'Drift' && (
                     <a href={p.telegram} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`Telegram de ${p.nome}`}>
                       <img src="/images/icons/telegram.jpg" alt="Telegram" className="w-5 h-5 object-contain" />
+                    </a>
+                  )}
+                  {p.github && (
+                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`GitHub de ${p.nome}`}>
+                      <img src="/images/barra_de_navegacao/github.png" alt="GitHub" className="w-5 h-5 object-contain" />
                     </a>
                   )}
                   {p.twitter && (
@@ -141,19 +142,21 @@ export default function StakeSol() {
                       </svg>
                     </a>
                   )}
-                  {p.landing && p.landing !== p.url && (
-                    <a href={p.landing} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`Landing page de ${p.nome}`}>
-                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="10" cy="10" r="8" stroke="#22d3ee" strokeWidth="2" fill="none"/>
-                        <path d="M2 10h16M10 2a16 16 0 0 1 0 16M10 2a16 16 0 0 0 0 16" stroke="#22d3ee" strokeWidth="1.5" fill="none"/>
-                      </svg>
-                    </a>
-                  )}
                   {p.defillama && (
                     <a href={p.defillama} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`DefiLlama de ${p.nome}`}>
                       <img src="/images/barra_de_navegacao/defillama.png" alt="DefiLlama" className="w-5 h-5 object-contain" />
                     </a>
                   )}
+                  <div className="ml-2 flex items-center justify-center w-8 h-8">
+                    <FavoriteStar 
+                      key={p.nome + '-STAKE - SOL'}
+                      protocolIdentifier={p.nome}
+                      categoryPath={"STAKE - SOL"}
+                      protocolName={p.nome}
+                      protocolUrl={p.url}
+                      protocolIconUrl={p.icon}
+                    />
+                  </div>
                 </div>
               </li>
             );

@@ -1,13 +1,14 @@
 import React from 'react';
 import Layout from '../../components/Layout';
+import FavoriteStar from '../../components/FavoriteStar';
 
 const protocolos = [
   {
     nome: 'Cetus',
-    url: 'https://www.cetus.zone/pools',
+    url: 'https://app.cetus.zone/pools',
     landing: 'https://www.cetus.zone/',
     twitter: 'https://twitter.com/CetusProtocol',
-    documentation: 'https://cetus-protocol.gitbook.io/cetus-protocol/',
+    documentation: 'https://cetus-1.gitbook.io/cetus-docs',
     discord: 'https://discord.gg/cetusprotocol',
     telegram: 'https://t.me/cetusprotocol',
     defillama: 'https://defillama.com/protocol/cetus',
@@ -15,40 +16,17 @@ const protocolos = [
     icon: "/images/barra_de_navegacao/cetus.jpg"
   },
   {
-    nome: 'Turbos',
-    url: 'https://turbos.finance/pools',
-    landing: 'https://turbos.finance/',
-    twitter: 'https://twitter.com/Turbos_finance',
-    documentation: 'https://docs.turbos.finance/',
-    discord: 'https://discord.gg/turbosfinance',
-    telegram: 'https://t.me/turbosfinance_EN',
-    defillama: 'https://defillama.com/protocol/turbos',
-    funcao: 'DEX / CONCENTRATED LIQUIDITY POOLS / FARMS',
-    icon: "/images/barra_de_navegacao/turbos.jpg"
-  },
-  {
     nome: 'Aftermath',
-    url: 'https://aftermath.finance/earn/pools',
+    url: 'https://aftermath.finance/pools',
     landing: 'https://aftermath.finance/',
     twitter: 'https://twitter.com/aftermathfi',
     documentation: 'https://docs.aftermath.finance/',
+    github: 'https://github.com/AftermathFinance',
     discord: 'https://discord.gg/aftermathfi',
     telegram: 'https://t.me/aftermath_finance',
     defillama: 'https://defillama.com/protocol/aftermath-finance',
     funcao: 'AGREGADOR DEX / LIQUIDITY POOLS / LIQUID STAKING',
     icon: "/images/barra_de_navegacao/aftermath.jpg"
-  },
-  {
-    nome: 'Navi Protocol',
-    url: 'https://www.naviprotocol.io/',
-    landing: 'https://www.naviprotocol.io/',
-    twitter: 'https://twitter.com/navi_protocol',
-    documentation: 'https://naviprotocol.gitbook.io/navi-protocol-docs/',
-    discord: 'https://discord.gg/naviprotocol',
-    telegram: 'https://t.me/navi_protocol',
-    defillama: 'https://defillama.com/protocol/navi-protocol',
-    funcao: 'LENDING POOLS / LIQUID STAKING / DAO',
-    icon: "/images/barra_de_navegacao/navi.jpg"
   }
 ];
 
@@ -56,7 +34,7 @@ export default function PoolsSUI() {
   return (
     <Layout>
       <div className="container mx-auto py-8">
-        <h1 className="text-3xl font-bold text-cyan-400 mb-8">POOLS - SUI</h1>
+        <h1 className="text-4xl font-bold text-white mb-10 text-center">Pools - SUI</h1>
         <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
           {protocolos.map((p) => {
             const docLinkText = p.documentation && p.documentation.toLowerCase().includes("whitepaper")
@@ -86,7 +64,7 @@ export default function PoolsSUI() {
                       <img src="/images/icons/discord.jpg" alt="Discord" className="w-5 h-5 object-contain" />
                     </a>
                   )}
-                  {p.telegram && (
+                  {p.telegram && p.nome !== 'Aftermath' && (
                     <a href={p.telegram} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`Telegram de ${p.nome}`}>
                       <img src="/images/icons/telegram.jpg" alt="Telegram" className="w-5 h-5 object-contain" />
                     </a>
@@ -99,19 +77,26 @@ export default function PoolsSUI() {
                       </svg>
                     </a>
                   )}
-                  {p.landing && p.landing !== p.url && (
-                    <a href={p.landing} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`Landing page de ${p.nome}`}>
-                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="10" cy="10" r="8" stroke="#22d3ee" strokeWidth="2" fill="none"/>
-                        <path d="M2 10h16M10 2a16 16 0 0 1 0 16M10 2a16 16 0 0 0 0 16" stroke="#22d3ee" strokeWidth="1.5" fill="none"/>
-                      </svg>
-                    </a>
-                  )}
                   {p.defillama && (
                     <a href={p.defillama} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`DefiLlama de ${p.nome}`}>
                       <img src="/images/barra_de_navegacao/defillama.png" alt="DefiLlama" className="w-5 h-5 object-contain" />
                     </a>
                   )}
+                  {p.github && (
+                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="ml-2 flex items-center justify-center w-8 h-8 rounded-full border border-cyan-400 hover:bg-cyan-900 transition" title={`GitHub de ${p.nome}`}>
+                      <img src="/images/barra_de_navegacao/github.png" alt="GitHub" className="w-5 h-5 object-contain" />
+                    </a>
+                  )}
+                  <div className="ml-2 flex items-center justify-center w-8 h-8">
+                    <FavoriteStar 
+                      key={p.nome + '-POOLS - SUI'}
+                      protocolIdentifier={p.nome}
+                      categoryPath={"POOLS - SUI"}
+                      protocolName={p.nome}
+                      protocolUrl={p.url}
+                      protocolIconUrl={p.icon}
+                    />
+                  </div>
                 </div>
               </li>
             );
