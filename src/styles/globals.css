@@ -27,8 +27,12 @@
 }
 
 /* Estilos base */
-html {
-  height: 100%;
+html, body {
+  width: 100vw;
+  min-width: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 body {
@@ -219,5 +223,24 @@ body::after {
   }
   .font-size-lg {
     font-size: 20px !important;
+  }
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .card-glow, .protocolo-card, .missao-glow, .admin-glow {
+    padding: 12px !important;
+    margin: 0 0 12px 0 !important;
+    border-radius: 12px !important;
+  }
+  .flex, .grid, .container, .w-full, .max-w-full, .max-w-5xl, .max-w-3xl, .max-w-xl, .max-w-md {
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
   }
 } 
